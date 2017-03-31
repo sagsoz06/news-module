@@ -1,0 +1,15 @@
+{
+    "name": "News",
+    "alias": "news",
+    "description": "A simple news module with categories and tags",
+    "keywords": [],
+    "version": "2.0.0",
+    "active": 1,
+    "order": 75,
+    "providers": [
+        "Modules\\News\\Providers\\NewsServiceProvider",
+        "Modules\\News\\Providers\\RouteServiceProvider"
+    ],
+    "files": [
+    ]
+}
