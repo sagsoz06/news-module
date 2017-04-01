@@ -15,7 +15,7 @@ class UpdatePostRequest extends BaseFormRequest
 
     public function translationRules()
     {
-        $id = $this->route()->getParameter('news')->id;
+        $id = $this->route()->parameter('news')->id;
 
         return [
             "title" => "required",
