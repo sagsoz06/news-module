@@ -101,6 +101,7 @@ class PostController extends AdminBaseController
                     ));
                     return $action_buttons;
                 })
+                ->escapeColumns([])
                 ->make(true);
         }
 

@@ -3,7 +3,7 @@
     "alias": "news",
     "description": "A simple news module with categories and tags",
     "keywords": [],
-    "version": "2.0.0",
+    "version": "2.0.2",
     "active": 1,
     "order": 75,
     "providers": [
