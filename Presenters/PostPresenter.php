@@ -16,7 +16,7 @@ class PostPresenter extends BasePresenter
      */
     private $post;
 
-    protected $zone     = 'thumbnail';
+    protected $zone     = 'newsImage';
     protected $slug     = 'slug';
     protected $transKey = 'news::routes.news.slug';
     protected $routeKey = 'news.slug';
