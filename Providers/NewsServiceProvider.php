@@ -4,8 +4,11 @@ namespace Modules\News\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\News\Entities\Category;
 use Modules\News\Entities\Post;
+use Modules\News\Events\Handlers\RegisterNewsSidebar;
 use Modules\News\Facades\NewsCategoryFacade;
 use Modules\News\Facades\NewsFacade;
 use Modules\News\Repositories\Cache\CacheCategoryDecorator;
@@ -20,7 +23,7 @@ use Modules\Tag\Repositories\TagManager;
 
 class NewsServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -37,6 +40,11 @@ class NewsServiceProvider extends ServiceProvider
     {
         $this->registerBindings();
         $this->registerFacades();
+
+        $this->app['events']->listen(
+          BuildingSidebar::class,
+          $this->getSidebarClassForModule('news', RegisterNewsSidebar::class)
+        );
     }
 
     public function boot()

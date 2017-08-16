@@ -113,7 +113,7 @@ class PublicController extends BasePublicController
 
         $this->throw404IfNotFound($category);
 
-        $posts = $category->posts()->paginate($this->perPage);
+        $posts = $category->posts()->orderBy('created_at', 'desc')->paginate($this->perPage);
 
         /* Start Seo */
         $this->seo()->setTitle($category->present()->meta_title)
