@@ -15,9 +15,7 @@
             {!! old("{$lang}.intro") !!}
         </textarea>
 
-        <textarea class="ckeditor" name="{{$lang}}[content]" rows="10" cols="80">
-            {!! old("{$lang}.content") !!}
-        </textarea>
+        @editor('content', trans('news::post.form.content'), old("{$lang}.content"), $lang)
 
         <?php if (config('asgard.news.config.post.partials.translatable.create') !== []): ?>
             <?php foreach (config('asgard.news.config.post.partials.translatable.create') as $partial): ?>
