@@ -162,7 +162,7 @@ class PostController extends AdminBaseController
     {
         $this->post->update($post, $request->all());
 
-        if (\Authentication::hasAccess('news.posts.author') || Sentinel::inRole('admin')) {
+        if (\Authentication::hasAccess('news.posts.author') || \Sentinel::inRole('admin')) {
             if ($request->has('user_id')) {
                 $user = $this->user->find($request->user_id);
                 $post->author()->associate($user);
