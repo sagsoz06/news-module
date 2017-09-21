@@ -8,7 +8,6 @@
     "order": 75,
     "providers": [
         "Modules\\News\\Providers\\NewsServiceProvider",
-        "Modules\\News\\Providers\\EventServiceProvider",
         "Modules\\News\\Providers\\RouteServiceProvider"
     ],
     "files": [
