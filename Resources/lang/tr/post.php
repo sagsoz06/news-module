@@ -42,6 +42,7 @@ return [
         'created_at'           => 'Yayınlanma Tarihi',
         'ordering'             => 'Sıralama',
         'user_id'              => 'Yazar',
+        'content'              => 'İçerik'
     ],
     'navigation'       => [
         'back to index' => 'Yazılara Geri Dön'

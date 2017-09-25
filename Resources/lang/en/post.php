@@ -41,6 +41,7 @@ return [
         'created_at'           => 'Published Date',
         'ordering'             => 'Ordering',
         'user_id'              => 'Author',
+        'content'              => 'Content'
     ],
     'navigation'       => [
         'back to index' => 'Back to posts index',
