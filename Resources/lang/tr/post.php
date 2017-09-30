@@ -42,7 +42,12 @@ return [
         'created_at'           => 'Yayınlanma Tarihi',
         'ordering'             => 'Sıralama',
         'user_id'              => 'Yazar',
-        'content'              => 'İçerik'
+        'content'              => 'İçerik',
+        'og_types'             => [
+            'article' => 'Makale',
+            'product' => 'Ürün',
+            'website' => 'Websitesi'
+        ]
     ],
     'navigation'       => [
         'back to index' => 'Yazılara Geri Dön'

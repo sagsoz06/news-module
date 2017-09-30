@@ -5,7 +5,7 @@ use Illuminate\Routing\Router;
 /** @var Router $router */
 $router->group(['prefix' => '/news'], function (Router $router) {
 
-    $router->bind('news', function ($id) {
+    $router->bind('newsPost', function ($id) {
         return app(\Modules\News\Repositories\PostRepository::class)->find($id);
     });
 
@@ -24,17 +24,17 @@ $router->group(['prefix' => '/news'], function (Router $router) {
         'uses' => 'PostController@store',
         'middleware' => 'can:news.posts.create',
     ]);
-    $router->get('posts/{news}/edit', [
+    $router->get('posts/{newsPost}/edit', [
         'as' => 'admin.news.post.edit',
         'uses' => 'PostController@edit',
         'middleware' => 'can:news.posts.edit',
     ]);
-    $router->put('posts/{news}', [
+    $router->put('posts/{newsPost}', [
         'as' => 'admin.news.post.update',
         'uses' => 'PostController@update',
         'middleware' => 'can:news.posts.edit',
     ]);
-    $router->delete('posts/{news}', [
+    $router->delete('posts/{newsPost}', [
         'as' => 'admin.news.post.destroy',
         'uses' => 'PostController@destroy',
         'middleware' => 'can:news.posts.destroy',

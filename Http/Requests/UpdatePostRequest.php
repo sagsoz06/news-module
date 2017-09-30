@@ -6,19 +6,23 @@ use Modules\Core\Internationalisation\BaseFormRequest;
 
 class UpdatePostRequest extends BaseFormRequest
 {
+    protected $translationsAttributesKey = 'news::post.form';
+
     public function rules()
     {
         return [
-            "created_at" => "required|date_format:d.m.Y H:i"
+            'category_id' => 'required',
+            "created_at"  => "required|date_format:d.m.Y H:i"
         ];
     }
 
     public function translationRules()
     {
-        $id = $this->route()->parameter('news')->id;
+        $id = $this->route()->parameter('newsPost')->id;
 
         return [
             "title" => "required",
+            "intro" => "required",
             "slug" => "required|unique:news__post_translations,slug,$id,post_id,locale,$this->localeKey"
         ];
     }
@@ -31,14 +35,5 @@ class UpdatePostRequest extends BaseFormRequest
     public function authorize()
     {
         return true;
-    }
-
-    public function translationMessages()
-    {
-        return [
-            'title.required' => trans('news::messages.title is required'),
-            'slug.required' => trans('news::messages.slug is required'),
-            'slug.unique' => trans('news::messages.slug is unique'),
-        ];
     }
 }

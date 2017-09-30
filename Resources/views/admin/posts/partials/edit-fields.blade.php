@@ -8,23 +8,26 @@
         </div>
         <div class='form-group{{ $errors->has("$lang.slug") ? ' has-error' : '' }}'>
             <?php $oldSlug = isset($post->translate($lang)->slug) ? $post->translate($lang)->slug : ''; ?>
-           {!! Form::label("{$lang}[slug]", trans('news::post.form.slug')) !!}
-           {!! Form::text("{$lang}[slug]", old("$lang.slug", $oldSlug), ['class' => 'form-control slug', 'data-slug' => 'target', 'placeholder' => trans('news::post.form.slug')]) !!}
-           {!! $errors->first("$lang.slug", '<span class="help-block">:message</span>') !!}
+            {!! Form::label("{$lang}[slug]", trans('news::post.form.slug')) !!}
+            {!! Form::text("{$lang}[slug]", old("$lang.slug", $oldSlug), ['class' => 'form-control slug', 'data-slug' => 'target', 'placeholder' => trans('news::post.form.slug')]) !!}
+            {!! $errors->first("$lang.slug", '<span class="help-block">:message</span>') !!}
         </div>
 
-        <?php $oldIntro = isset($post->translate($lang)->intro) ? $post->translate($lang)->intro : ''; ?>
-        <textarea class="textarea" name="{{$lang}}[intro]" placeholder="{{ trans('news::post.form.intro') }}" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+        <div class='form-group{{ $errors->has("$lang.intro") ? ' has-error' : '' }}'>
+            <?php $oldIntro = isset($post->translate($lang)->intro) ? $post->translate($lang)->intro : ''; ?>
+            <textarea class="textarea" name="{{$lang}}[intro]" placeholder="{{ trans('news::post.form.intro') }}" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
             {!! old("{$lang}.intro", $oldIntro) !!}
-        </textarea>
+            </textarea>
+            {!! $errors->first("$lang.intro", '<span class="help-block">:message</span>') !!}
+        </div>
 
         <?php $oldContent = isset($post->translate($lang)->content) ? $post->translate($lang)->content : ''; ?>
         @editor('content', trans('news::post.form.content'), old("$lang.content", $oldContent), $lang)
 
         <?php if (config('asgard.news.config.post.partials.translatable.edit') !== []): ?>
-            <?php foreach (config('asgard.news.config.post.partials.translatable.edit') as $partial): ?>
-            @include($partial)
-            <?php endforeach; ?>
+        <?php foreach (config('asgard.news.config.post.partials.translatable.edit') as $partial): ?>
+        @include($partial)
+        <?php endforeach; ?>
         <?php endif; ?>
     </div>
     <div class="box-group" id="accordion">
