@@ -66,7 +66,7 @@
                 @mediaMultiple('newsImage', null, null, trans('news::post.form.thumbnail'))
             </div>
         </div>
-        @if(Authentication::hasAccess(['blog.posts.sitemap']))
+        @if($currentUser->hasAccess(['news.posts.sitemap']))
         <div class="box box-primary">
             <div class="box-body">
                 <div class='form-group{{ $errors->has("meta_robot_no_index") ? ' has-error' : '' }}'>

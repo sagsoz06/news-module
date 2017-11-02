@@ -45,7 +45,7 @@
         <div class="box box-primary">
             <div class="box-body">
 
-                @if(Authentication::hasAccess(['news.posts.author']))
+                @if($currentUser->hasAccess('news.posts.author'))
                 {!! Form::normalSelect('user_id', trans('news::post.form.user_id'), $errors, $userLists, isset($post->author->id) ? $post->author->id : null) !!}
                 @endif
                 <div class="form-group">
@@ -84,7 +84,7 @@
                 @mediaMultiple('newsImage', $post, null, trans('news::post.form.thumbnail'))
             </div>
         </div>
-        @if(Authentication::hasAccess(['news.posts.sitemap']))
+        @if($currentUser->hasAccess('news.posts.sitemap'))
         <div class="box box-primary">
             <div class="box-body">
                 <div class="form-group">
