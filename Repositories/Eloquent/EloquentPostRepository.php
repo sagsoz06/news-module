@@ -186,6 +186,11 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         return $this->model->orderBy('counter', 'desc')->take($amount)->get();
     }
 
+    /**
+     * @param $query
+     * @param $per_page
+     * @return mixed
+     */
     public function search($query, $per_page)
     {
         return $this->model->match($query)->paginate($per_page);

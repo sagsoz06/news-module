@@ -53,7 +53,16 @@ interface PostRepository extends BaseRepository
      */
     public function findByTagPaginate($tag, $per_page);
 
+    /**
+     * @param int $amount
+     * @return mixed
+     */
     public function popular($amount=5);
 
+    /**
+     * @param $query
+     * @param $per_page
+     * @return mixed
+     */
     public function search($query, $per_page);
 }

@@ -131,6 +131,10 @@ class CachePostDecorator extends BaseCacheDecorator implements PostRepository
             );
     }
 
+    /**
+     * @param int $amount
+     * @return mixed
+     */
     public function popular($amount = 5)
     {
         return $this->cache
@@ -142,6 +146,11 @@ class CachePostDecorator extends BaseCacheDecorator implements PostRepository
             );
     }
 
+    /**
+     * @param $query
+     * @param $per_page
+     * @return mixed
+     */
     public function search($query, $per_page)
     {
         $page = \Request::has('page') ? \Request::query('page') : 1;
