@@ -39,6 +39,7 @@
                 {!! Form::normalInput('ordering', trans('news::category.form.ordering'), $errors, $category) !!}
             </div>
         </div>
+        @if($currentUser->hasAccess('news.categories.sitemap'))
         <div class="box box-primary">
             <div class="box-body">
                 <div class="form-group">
@@ -64,6 +65,7 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
 </div>
 

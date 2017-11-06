@@ -33,13 +33,14 @@
             </div>
         </div> {{-- end nav-tabs-custom --}}
     </div>
-    @if(Authentication::hasAccess('news.categories.sitemap'))
+
     <div class="col-md-2">
         <div class="box box-primary">
             <div class="box-body">
                 {!! Form::normalInput('ordering', trans('news::category.form.ordering'), $errors) !!}
             </div>
         </div>
+        @if($currentUser->hasAccess('news.categories.sitemap'))
         <div class="box box-primary">
             <div class="box-body">
                 <div class='form-group{{ $errors->has("meta_robot_no_index") ? ' has-error' : '' }}'>
@@ -63,8 +64,8 @@
                 </div>
             </div>
         </div>
+        @endif
     </div>
-    @endif
 </div>
 
 {!! Form::close() !!}
