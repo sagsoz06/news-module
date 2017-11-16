@@ -21,9 +21,10 @@ class UpdatePostRequest extends BaseFormRequest
         $id = $this->route()->parameter('newsPost')->id;
 
         return [
-            "title" => "required",
-            "intro" => "required",
-            "slug" => "required|unique:news__post_translations,slug,$id,post_id,locale,$this->localeKey"
+            "title"   => "required",
+            "intro"   => "required",
+            "slug"    => "required|unique:news__post_translations,slug,$id,post_id,locale,$this->localeKey",
+            "content" => "required"
         ];
     }
 

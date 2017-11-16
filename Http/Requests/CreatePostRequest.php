@@ -26,6 +26,7 @@ class CreatePostRequest extends BaseFormRequest
             'title' => 'required',
             'intro' => 'required',
             'slug'  => "required|unique:news__post_translations,slug,null,post_id,locale,$this->localeKey",
+            'content' => 'required'
         ];
     }
 
