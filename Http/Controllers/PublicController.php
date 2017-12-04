@@ -4,6 +4,7 @@ namespace Modules\News\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Modules\News\Entities\Post;
+use Modules\News\Entities\Status;
 use Modules\News\Repositories\CategoryRepository;
 use Modules\News\Repositories\PostRepository;
 use Modules\Core\Http\Controllers\BasePublicController;
@@ -113,7 +114,7 @@ class PublicController extends BasePublicController
 
         $this->throw404IfNotFound($category);
 
-        $posts = $category->posts()->orderBy('created_at', 'desc')->paginate($this->perPage);
+        $posts = $category->posts()->where('status', Status::PUBLISHED)->orderBy('created_at', 'desc')->paginate($this->perPage);
 
         /* Start Seo */
         $this->seo()->setTitle($category->present()->meta_title)
