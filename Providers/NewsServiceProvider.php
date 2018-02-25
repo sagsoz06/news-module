@@ -19,6 +19,7 @@ use Modules\News\Repositories\Eloquent\EloquentPostRepository;
 use Modules\News\Repositories\PostRepository;
 use Modules\Core\Traits\CanPublishConfiguration;
 use Modules\Media\Image\ThumbnailManager;
+use Modules\News\Widgets\LatestWidget;
 use Modules\Tag\Repositories\TagManager;
 
 class NewsServiceProvider extends ServiceProvider
@@ -50,6 +51,8 @@ class NewsServiceProvider extends ServiceProvider
           BuildingSidebar::class,
           $this->getSidebarClassForModule('news', RegisterNewsSidebar::class)
         );
+
+        \Widget::register('news_latest', LatestWidget::class);
     }
 
     public function boot()
