@@ -2,7 +2,7 @@
 
 return [
     'title' => [
-        'tag' => 'Tag',
+        'tag' => 'Tag :tag',
         'create tag' => 'Create A Tag',
         'edit tag' => 'Edit A Tag',
     ],

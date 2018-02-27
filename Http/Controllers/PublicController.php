@@ -144,7 +144,7 @@ class PublicController extends BasePublicController
 
         if (isset($tag)) {
             /* Start Seo */
-            $this->seo()->setTitle(trans('tag::tags.tag') . ' : ' . $tag->name)
+            $this->seo()->setTitle(trans('news::tag.title.tag', ['tag'=>$tag->name]))
                 ->setDescription($tag->name)
                 ->meta()->setUrl(route('news.tag', [$tag->slug]))
                 ->addMeta('robots', "index, follow");

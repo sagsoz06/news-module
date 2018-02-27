@@ -2,7 +2,7 @@
 
 return [
     'title' => [
-        'tag' => 'Etiket',
+        'tag' => 'Etiket :tag',
         'create tag' => 'Etiket Ekle',
         'edit tag' => 'Etiket Düzenle',
     ],
