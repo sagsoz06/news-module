@@ -51,5 +51,6 @@ return [
     'create resource'  => 'Create Post',
     'edit resource'    => 'Edit Post',
     'destroy resource' => 'Delete Post',
-    'sitemap resource' => 'Sitemap'
+    'sitemap resource' => 'Sitemap',
+    'author resource'  => 'Author Post List'
 ];
