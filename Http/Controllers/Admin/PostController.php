@@ -76,7 +76,9 @@ class PostController extends AdminBaseController
     {
         $posts = Post::query();
         if (!$this->auth->user()->inRole('admin')) {
-            $posts = $posts->where('user_id', $this->auth->user()->id);
+            if($this->auth->hasAccess('news.posts.author') === false) {
+                $posts = $posts->where('user_id', $this->auth->user()->id);
+            }
         }
         if (request()->ajax()) {
             return Datatables::of($posts)
