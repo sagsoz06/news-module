@@ -52,7 +52,7 @@ class NewsServiceProvider extends ServiceProvider
           $this->getSidebarClassForModule('news', RegisterNewsSidebar::class)
         );
 
-        \Widget::register('news_latest', LatestWidget::class);
+        \Widget::register('newsLatestPosts', '\Modules\News\Widgets\NewsWidgets@latestPosts');
     }
 
     public function boot()
