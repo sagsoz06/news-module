@@ -15,7 +15,7 @@ class NewsWidgets
         $this->post = $post;
     }
 
-    public function latestPosts($limit=5, $view='latestPosts')
+    public function latestPosts($limit=5, $view='latest-posts')
     {
         if($posts = $this->post->latest($limit))
         {
