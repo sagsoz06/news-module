@@ -36,7 +36,7 @@ class NewsWidgets
     public function tags($posts, $view="tags")
     {
         try {
-            if($posts->count()>1) {
+            if(count($posts)>1) {
                 $tags = collect();
                 foreach ($posts as $post) {
                     $tags->push($post->tags()->first());
