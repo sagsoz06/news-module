@@ -1,5 +1,6 @@
 <?php namespace Modules\News\Widgets;
 
+use Modules\News\Entities\Post;
 use Modules\News\Repositories\CategoryRepository;
 use Modules\News\Repositories\PostRepository;
 
@@ -33,21 +34,18 @@ class NewsWidgets
         return view('news::widgets.'.$view, compact('categories'));
     }
 
-    public function tags($posts, $view="tags")
+    public function tags($posts, $limit=10, $view='tags')
     {
-        try {
-            if(count($posts)>1) {
-                $tags = collect();
-                foreach ($posts as $post) {
-                    $tags->push($post->tags()->first());
-                }
-            } else {
-                $tags = $posts->tags()->get();
-            }
-            return view('news::widgets.'.$view, compact('tags'));
+        if(count($posts)>1) {
+            $tags = $posts->filter(function($post){
+                return $post->tags->count() > 0;
+            })->map(function($post){
+                return $post->tags()->first();
+            });
+            $tags = $tags->take($limit);
+        } else {
+            $tags = $posts->tags()->take($limit)->get();
         }
-        catch (\Exception $exception) {
-            return null;
-        }
+        return view('news::widgets.'.$view, compact('tags'));
     }
 }
