@@ -142,18 +142,20 @@ class PublicController extends BasePublicController
 
         $this->throw404IfNotFound($posts);
 
+        $title = trans('news::tag.title.tag', ['tag'=>$tag->name]);
+
         if (isset($tag)) {
             /* Start Seo */
-            $this->seo()->setTitle(trans('news::tag.title.tag', ['tag'=>$tag->name]))
+            $this->seo()->setTitle($title)
                 ->setDescription($tag->name)
                 ->meta()->setUrl(route('news.tag', [$tag->slug]))
                 ->addMeta('robots', "index, follow");
             /* End Seo */
 
             /* Start Breadcrumbs */
-            Breadcrumbs::register('news.tag', function ($breadcrumbs) use ($tag) {
+            Breadcrumbs::register('news.tag', function ($breadcrumbs) use ($tag, $title) {
                 $breadcrumbs->parent('news');
-                $breadcrumbs->push(trans('tag::tags.tag') . ' : ' . $tag->name, route('news.tag', [$tag->slug]));
+                $breadcrumbs->push($title, route('news.tag', [$tag->slug]));
             });
             /* End Breadcrumbs */
         }
