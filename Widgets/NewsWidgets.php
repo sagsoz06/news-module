@@ -1,5 +1,6 @@
 <?php namespace Modules\News\Widgets;
 
+use Illuminate\Pagination\LengthAwarePaginator;
 use Modules\News\Entities\Post;
 use Modules\News\Repositories\CategoryRepository;
 use Modules\News\Repositories\PostRepository;
@@ -15,6 +16,11 @@ class NewsWidgets
      */
     private $category;
 
+    /**
+     * NewsWidgets constructor.
+     * @param PostRepository $post
+     * @param CategoryRepository $category
+     */
     public function __construct(PostRepository $post, CategoryRepository $category)
     {
 
@@ -22,27 +28,42 @@ class NewsWidgets
         $this->category = $category;
     }
 
+    /**
+     * @param int $limit
+     * @param string $view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function latest($limit=5, $view='latest-posts')
     {
         $posts = $this->post->latest($limit);
         return view('news::widgets.'.$view, compact('posts'));
     }
 
+    /**
+     * @param string $view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function categories($view='category')
     {
         $categories = $this->category->all();
         return view('news::widgets.'.$view, compact('categories'));
     }
 
+    /**
+     * @param Post $posts
+     * @param int $limit
+     * @param string $view
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function tags($posts, $limit=10, $view='tags')
     {
-        if(count($posts)>1) {
+        if($posts instanceof LengthAwarePaginator) {
             $tags = $posts->filter(function($post){
                 return $post->tags->count() > 0;
-            })->map(function($post){
-                return $post->tags()->first();
+            })->map(function($post) use ($limit) {
+                return $post->tags()->take($limit)->get();
             });
-            $tags = $tags->take($limit);
+            $tags = $tags->flatten();
         } else {
             $tags = $posts->tags()->take($limit)->get();
         }
