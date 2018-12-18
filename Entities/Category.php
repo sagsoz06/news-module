@@ -24,7 +24,7 @@ class Category extends Model
 
     public function getUrlAttribute()
     {
-        return \LaravelLocalization::getLocalizedURL(locale(), route('news.category', [$this->getAttribute('slug')]));
+        return route('news.category', [$this->getAttribute('slug')]);
     }
 
     public function getRobotsAttribute()

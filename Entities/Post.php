@@ -57,7 +57,7 @@ class Post extends Model implements TaggableInterface
      */
     public function getUrlAttribute()
     {
-        return \LaravelLocalization::getLocalizedURL(locale(), route('news.slug', [$this->slug]));
+        return route('news.slug', [$this->slug]);
     }
 
     /**
