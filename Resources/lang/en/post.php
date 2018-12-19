@@ -10,6 +10,9 @@ return [
         'next'          => 'Sonraki Yazı',
         'previous'      => 'Önceki Yazı',
     ],
+    'tag' => [
+        'desc' => 'description of :tag'
+    ],
     'button'           => [
         'create post' => 'Create post',
         'previous'    => 'Previous Post',

@@ -11,6 +11,9 @@ return [
         'previous'      => 'Önceki Yazı',
         'tag'           => 'Etiket',
     ],
+    'tag' => [
+        'desc' => ':tag etiketine göre açıklama'
+    ],
     'button'           => [
         'create post' => 'Yazı Ekle',
         'previous'    => 'Önceki Yazı',
