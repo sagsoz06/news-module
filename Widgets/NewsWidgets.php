@@ -69,4 +69,14 @@ class NewsWidgets
         }
         return view('news::widgets.'.$view, compact('tags'));
     }
+
+    public function findByCategory($category="", $limit=5, $view="category-posts")
+    {
+        $category = $this->category->findBySlug($category)->load(['posts', 'translations']);
+        $posts    = $category->posts()->where('status', 2)->take($limit)->get();
+        if($posts->count()>0) {
+            return view('news::widgets.'.$view, compact('category', 'posts'));
+        }
+        return null;
+    }
 }
