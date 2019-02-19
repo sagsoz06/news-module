@@ -24,7 +24,7 @@ class Category extends Model
 
     public function getUrlAttribute()
     {
-        return route('news.category', [$this->getAttribute('slug')]);
+        return localize_trans_url(locale(), 'news::routes.category.slug', ['slug'=>$this->slug]);
     }
 
     public function getRobotsAttribute()

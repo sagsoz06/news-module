@@ -53,11 +53,11 @@ class Post extends Model implements TaggableInterface
     }
 
     /**
-     * @return string
+     * @return false|string
      */
     public function getUrlAttribute()
     {
-        return route('news.slug', [$this->slug]);
+        return localize_trans_url(locale(), 'news::routes.news.slug', ['slug'=>$this->slug]);
     }
 
     /**
