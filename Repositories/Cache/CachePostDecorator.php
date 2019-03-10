@@ -20,11 +20,12 @@ class CachePostDecorator extends BaseCacheDecorator implements PostRepository
      * @param int $amount
      * @return Collection
      */
-    public function latest($amount = 5)
+    public function latest($amount = 5, $image=false)
     {
+        $image = $image ? 1 : 0;
         return $this->cache
             ->tags([$this->entityName, 'global'])
-            ->remember("{$this->locale}.{$this->entityName}.latest.{$amount}", $this->cacheTime,
+            ->remember("{$this->locale}.{$this->entityName}.latest.{$amount}.{$image}", $this->cacheTime,
                 function () use ($amount) {
                     return $this->repository->latest($amount);
                 }

@@ -10,7 +10,7 @@ interface PostRepository extends BaseRepository
      * @param int $amount
      * @return mixed
      */
-    public function latest($amount = 5);
+    public function latest($amount = 5, $image=false);
 
     /**
      * Get the previous post of the given post

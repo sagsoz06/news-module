@@ -33,9 +33,9 @@ class NewsWidgets
      * @param string $view
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function latest($limit=5, $view='latest-posts')
+    public function latest($limit=5, $view='latest-posts', $image=false)
     {
-        $posts = $this->post->latest($limit);
+        $posts = $this->post->latest($limit, $image);
         return view('news::widgets.'.$view, compact('posts'));
     }
 

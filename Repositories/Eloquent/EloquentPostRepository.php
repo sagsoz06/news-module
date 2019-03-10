@@ -95,9 +95,11 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
      * @param int $amount
      * @return Collection
      */
-    public function latest($amount = 5)
+    public function latest($amount = 5, $image=false)
     {
-        return $this->model->whereStatus(Status::PUBLISHED)->orderBy('created_at', 'desc')->take($amount)->get();
+        return $this->model->whereStatus(Status::PUBLISHED)->with(['category','files'])->whereHas('files', function($query) use ($image){
+            if($image) $query->where('zone', '!=', "");
+        })->orderBy('created_at', 'desc')->take($amount)->get();
     }
 
     /**
