@@ -128,10 +128,10 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'status', name: 'status'},
-                    {data: 'author.fullname', name: 'author.fullname'},
-                    {data: 'category.name', name: 'category.name'},
-                    {data: 'title', name: 'title'},
-                    {data: 'slug', name: 'slug'},
+                    {data: 'author.fullname', name: 'author.first_name'},
+                    {data: 'category.name', name: 'category.translations.name'},
+                    {data: 'title', name: 'translations.title'},
+                    {data: 'slug', name: 'translations.slug'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'action', name: 'action', orderable: false, searchable: true}
                 ],

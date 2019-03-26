@@ -67,21 +67,21 @@ class PostController extends AdminBaseController
         view()->share('ogTypes', $this->ogType->lists());;
     }
 
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @throws \Exception
      */
     public function index()
     {
-        $posts = Post::query();
+        $posts = $this->post->allWithBuilder()->with(['translations', 'category','category.translations', 'author']);
         if (!$this->auth->user()->inRole('admin')) {
             if($this->auth->hasAccess('news.posts.author') === false) {
                 $posts = $posts->where('user_id', $this->auth->user()->id);
             }
         }
         if (request()->ajax()) {
-            return Datatables::of($posts)
+            return Datatables::eloquent($posts)
                 ->addColumn('status', function ($post) {
                     return '<span class="label ' . $post->present()->statusLabelClass . '">' .
                     $post->present()->status
