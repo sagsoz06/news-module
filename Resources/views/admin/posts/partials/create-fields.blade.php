@@ -12,7 +12,7 @@
         </div>
 
         <div class='form-group{{ $errors->has("$lang.intro") ? ' has-error' : '' }}'>
-            <textarea class="textarea" name="{{$lang}}[intro]" placeholder="{{ trans('blog::post.form.intro') }}" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
+            <textarea class="textarea" name="{{$lang}}[intro]" placeholder="{{ trans('news::post.form.intro') }}" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
                 {!! old("{$lang}.intro") !!}
             </textarea>
             {!! $errors->first("$lang.intro", '<span class="help-block">:message</span>') !!}

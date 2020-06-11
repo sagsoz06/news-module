@@ -79,4 +79,17 @@ class NewsWidgets
         }
         return null;
     }
+
+    public function archive($view='archive')
+    {
+        $months = $this->post->archive();
+        $months = $months->map(function($item){
+            $item->archive_url = route('news.archive', [$item->month, $item->year]);
+            return $item;
+        });
+        if($months) {
+            return view('news::widgets.'.$view, compact('months'));
+        }
+        return null;
+    }
 }

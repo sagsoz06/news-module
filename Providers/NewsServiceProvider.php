@@ -55,6 +55,7 @@ class NewsServiceProvider extends ServiceProvider
         \Widget::register('newsLatestPosts', '\Modules\News\Widgets\NewsWidgets@latest');
         \Widget::register('newsCategories', '\Modules\News\Widgets\NewsWidgets@categories');
         \Widget::register('newsTags', '\Modules\News\Widgets\NewsWidgets@tags');
+        \Widget::register('newsArchive', '\Modules\News\Widgets\NewsWidgets@archive');
         \Widget::register('newsFindByCategory', '\Modules\News\Widgets\NewsWidgets@findByCategory');
     }
 
